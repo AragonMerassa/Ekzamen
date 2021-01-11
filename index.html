@@ -1,0 +1,28 @@
+<html ng-app="ProductApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Екзаменаційна робота</title>
+</head>
+<body>
+    <div ng-controller="Controller1 as BuyList"  id="list1">
+        <h2>Каталог йогуртів</h2>
+            <div ng-repeat="item in BuyList.BuyList">
+                 {{item.mark}} {{item.quantity}}
+                <button ng-click="BuyList.addToBoughtList($index);">Приховати</button>
+                <button ng-click="BuyList.remove($index);">Видалити</button>
+            </div>
+            <div ng-if="BuyList.BuyList.length == 0">
+                Усе приховано або видалено
+            </div>
+    </div>
+    <div ng-controller="Controller2 as boughtList" id="list2">
+        <h2>Приховано</h2>
+            <div ng-repeat="item in boughtList.boughtList">
+                Приховано {{item.quantity}} {{item.mark}}
+            </div>
+    </div>
+</body>
+</html>
